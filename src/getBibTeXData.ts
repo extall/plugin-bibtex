@@ -2,6 +2,7 @@ import joplin from "api";
 import { DataStore } from "./data/data-store";
 import { parse } from "./util/parser.util";
 import { Reference } from "./model/reference.model";
+const { StringDecoder } = require('string_decoder');
 import {
     ERROR_PARSING_FAILED,
     SETTINGS_BIBTEX_FILE_PATH_ID,
@@ -50,7 +51,6 @@ export async function getBibTeXData(): Promise<Reference[]> {
             let match = myregexp.exec(line);
             if (match != null) {
                 attached_bibfile = match[1];
-                console.log(attached_bibfile);
                 break;
             }
         }
@@ -59,7 +59,9 @@ export async function getBibTeXData(): Promise<Reference[]> {
         let attached_bibfile_content: string = "";
         if (attached_bibfile !== ""){
             attached_bibfile_obj = await joplin.data.get(['resources', attached_bibfile, 'file']);
-            attached_bibfile_content = attached_bibfile_obj.body;
+            let bibBytes: any = attached_bibfile_obj.body;
+            let StringDec = new StringDecoder();
+            attached_bibfile_content = StringDec.write(bibBytes);
         }
 
         // Parse the raw data and store it
