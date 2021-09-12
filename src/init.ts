@@ -1,7 +1,7 @@
 import joplin from "api";
 import { initConfigScreen } from "./ui/settings";
 import { registerToolbarButton } from "./ui/toolbar-button";
-import { registerAddBibTexReferenceCommand } from "./add-bibtex-reference.command";
+import {registerAddAttachedBibTexReferenceCommand} from "./add-bibtex-reference.command";
 import { registerBibliographyRenderer } from "./ui/bibliography-renderer";
 import { getBibTeXData } from "./getBibTeXData";
 
@@ -10,7 +10,7 @@ import { getBibTeXData } from "./getBibTeXData";
  */
 export async function init(): Promise<void> {
     await initConfigScreen();
-    await registerAddBibTexReferenceCommand();
+    await registerAddAttachedBibTexReferenceCommand();
     await registerToolbarButton();
 
     try {

@@ -10,10 +10,10 @@ const fs = joplin.require("fs-extra");
 /**
  * Register the main command of the plugin
  */
-export async function registerAddBibTexReferenceCommand() {
+export async function registerAddAttachedBibTexReferenceCommand() {
     await joplin.commands.register({
         name: ADD_BIBTEX_REFERENCE_COMMAND,
-        label: "Add BibTeX Reference",
+        label: "Add Attached BibTeX Reference",
         iconName: PLUGIN_ICON,
         execute: async () => {
             // Get refs
