@@ -2,11 +2,12 @@ import joplin from "api";
 import { DataStore } from "./data/data-store";
 import { parse } from "./util/parser.util";
 import { Reference } from "./model/reference.model";
-const { StringDecoder } = require('string_decoder');
 import {
     ERROR_PARSING_FAILED,
     SETTINGS_BIBTEX_FILE_PATH_ID,
 } from "./constants";
+
+const { StringDecoder } = require('string_decoder');
 const fs = joplin.require("fs-extra");
 
 /**

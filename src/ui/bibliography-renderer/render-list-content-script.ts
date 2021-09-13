@@ -50,6 +50,7 @@ export default function (context) {
             markdownIt.renderer.rules["reference_list"] = renderReferenceList;
 
             function renderReferenceList(tokens, idx, options) {
+                // IDs are an array of such type ["Steward2019useagriculturalrobots"]
                 let IDs: string[] = tokens[idx]["attrs"][0][1];
                 if (IDs.length === 0) return "";
 
@@ -68,9 +69,10 @@ export default function (context) {
 				`;
 
                 return `
+                    <span>Hey, I am returning this anyway, but something is wrong!</span>
 					<h1 id="references_title" style="display:none">References</h1>
 					<div id="references_list"></div>
-					<style onload='${script.replace(/\n/g, " ")}'/>
+					<style onload='${script.replace(/\n/g, " ")}'></style>
 				`;
             }
         },

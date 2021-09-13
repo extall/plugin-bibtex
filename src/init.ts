@@ -1,7 +1,7 @@
 import joplin from "api";
 import { initConfigScreen } from "./ui/settings";
 import { registerToolbarButton } from "./ui/toolbar-button";
-import {registerAddAttachedBibTexReferenceCommand} from "./add-bibtex-reference.command";
+import {registerAddAttachedBibTexReferenceCommand} from "./add-attached-bibtex-reference.command";
 import { registerBibliographyRenderer } from "./ui/bibliography-renderer";
 import { getBibTeXData } from "./getBibTeXData";
 
@@ -20,4 +20,13 @@ export async function init(): Promise<void> {
     }
 
     await registerBibliographyRenderer();
+
+    // Register the necessary triggers
+    await joplin.workspace.onNoteChange(() => {
+        try {
+            getBibTeXData();
+        } catch (e) {
+            joplin.views.dialogs.showMessageBox(e.message);
+        }
+    })
 }
