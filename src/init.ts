@@ -4,6 +4,7 @@ import { registerToolbarButton } from "./ui/toolbar-button";
 import {registerAddAttachedBibTexReferenceCommand} from "./add-attached-bibtex-reference.command";
 import { registerBibliographyRenderer } from "./ui/bibliography-renderer";
 import { getBibTeXData } from "./getBibTeXData";
+import {DataStore} from "./data/data-store";
 
 /**
  * Initialize the main components of the plugin
@@ -24,6 +25,8 @@ export async function init(): Promise<void> {
     // Register the necessary triggers
     await joplin.workspace.onNoteChange(() => {
         try {
+            // Clearing the data store does nothing here
+            //DataStore.setReferences([]);
             getBibTeXData();
         } catch (e) {
             joplin.views.dialogs.showMessageBox(e.message);

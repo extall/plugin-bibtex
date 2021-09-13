@@ -9,6 +9,6 @@ export const ADD_BIBTEX_REFERENCE_COMMAND = "addAttachedBibTeXReference";
 export const PLUGIN_TOOLBAR_BUTTON_ID = "bibtex_plugin_toolbar_button";
 export const CITATION_POPUP_ID = "citation_popup";
 export const ERROR_PARSING_FAILED = "Error while parsing BibTeX file: ";
-export const REFERENCE_LIST_CONTENT_SCRIPT_ID = "reference_lis_renderer";
+export const REFERENCE_LIST_CONTENT_SCRIPT_ID = "reference_list_renderer";
 export const MESSAGE_RESTART_APP =
     "Please restart the app for the changes to take effect";
