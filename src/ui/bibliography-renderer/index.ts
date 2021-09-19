@@ -26,6 +26,7 @@ export async function registerBibliographyRenderer(): Promise<void> {
         REFERENCE_LIST_CONTENT_SCRIPT_ID,
 
         (IDs: string[]) => {
+            console.log("hey, I received a message over here.");
             IDs = [...new Set(IDs)]; // Filter duplicate references
 
             /**
